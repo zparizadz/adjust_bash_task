@@ -1,0 +1,11 @@
+#!/bin/bash
+array=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")    # Array of 1 to 10
+while [[ "${#array[@]}" -gt 0 ]]  #The loop for array traverse while a member exist in array
+  do
+    a=$((RANDOM % 10 +1))    #Generating a random Number between 1 to 10
+    if [[ " ${array[@]} " =~ $a ]]; then  #performs a regular expression match if the generated number exist in array
+        echo $a # Print the generated random number
+        array=(${array[@]/$a/})  #Remove the Generated random number from the array
+    fi  #End of If
+  done #End of while loop
+
